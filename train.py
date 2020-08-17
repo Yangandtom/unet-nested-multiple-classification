@@ -189,7 +189,7 @@ def eval_net(net, loader, device, n_val, cfg):
     net.eval()
     tot = 0
 
-    with tqdm(total=n_val, desc='Validation round', unit='img', leave=False) as pbar:
+    with torch.no_grad(), tqdm(total=n_val, desc='Validation round', unit='img', leave=False) as pbar:
         for batch in loader:
             imgs = batch['image']
             true_masks = batch['mask']
