@@ -51,8 +51,9 @@ class BasicDataset(Dataset):
 
     def __getitem__(self, i):
         img_name = self.img_names[i]
-        img_path = osp.join(self.imgs_dir, img_name)
-        mask_path = osp.join(self.masks_dir, img_name)
+        img_name=img_name[:-4]#####
+        img_path = osp.join(self.imgs_dir, img_name+"jpg")###
+        mask_path = osp.join(self.masks_dir, img_name+"png")###
 
         img = Image.open(img_path)
         mask = Image.open(mask_path)
